@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <title>Document Object Model</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+
+<body>
+    <header class="jumbotron-fluid bg-primary p-5">
+        <h1 class="display-2 text-center text-white">Document Object Model</h1>
+    </header>
+    <main class="container">
+        <div class="row pt-4 pb-4">
+            <div class="col-sm-6">
+                <h2 class="display-4 mb-4">Co je to DOM?</h2>
+                <p class="alert alert-success">
+                    Zkratkou <abbr title="Document Object Model">DOM</abbr> označujeme
+                    objektový model dokumentu (anglicky Document Object Model). Jedná se
+                    o rozhraní, přes které mohou programátoři provádět změny struktury,
+                    obsahu i stylu HTML stránky.
+                </p>
+                <p>
+                    DOM reprezentuje webovou stránku jako model tvořený uzly (nodes) a
+                    objekty (objects). Díky tomu můžeme využívat principů objektově
+                    orientovaného programování a pomocí JavaScriptu manipulovat s
+                    jakýmkoliv prvkem stránky. Dříve statický web se tak stává
+                    dynamickým a zároveň interaktivním, protože uživatel prostřednictvím
+                    myši, klávesnice, v případě mobilních zařízení i prsty, vyvolává na
+                    stránce nejrůznější akce - v objektovém programování označované jako
+                    události (events). V okně prohlížeče tak mohou být spouštěny
+                    plnohodnotné aplikace, které jsou v mnoha případech rovnocenné
+                    programům nainstalovaným v lokálních počítačích a běžících v
+                    grafických operačních systémech.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <p class="alert alert-info">
+                    Standard <a href="https://dom.spec.whatwg.org/">W3C DOM (WHATWG DOM)</a> je implementován ve většině
+                    moderních prohlížečů.
+                    Řada z nich však tento standard rozšiřuje vlastním specifickým
+                    způsobem, což pochopitelně znesnadňuje práci programátorům, kteří s
+                    tím musejí počítat při tvorbě svého kódu, chtějí-li zajistit
+                    maximální kompatibilitu svým webovým aplikacím.
+                </p>
+                <p>
+                    Všechny vlastnosti (properties), metody (methods) a události
+                    (events) určené pro manipulaci a vytváření webových stránek jsou
+                    organizovány do objektů. Například základem celé stránky je objekt
+                    document (tedy dokument HTML), tabulku zase tvoří speciální
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement">HTMLTableElement DOM</a>
+                    rozhraní, specifickým objektem je i obrázek a
+                    podobně.
+                </p>
+                <p>
+                    Moderní DOM tvoří vícero APIs (Application Programming Interfaces),
+                    tedy různých programových knihoven, s jejichž pomocí programátoři
+                    sestavují vlastní webové aplikace. K nejdůležitějším patří
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API">HTML DOM
+                        API</a> umožňující přístup k běžným objektům webové stránky (nadpisům,
+                    odstavcům, odkazům, seznamům, tabulkám, obrázkům apod.). K základním
+                    dovednostem programátora webových aplikací proto patří schopnost
+                    dobře se orientovat v dokumentacích a referencích API.
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row pt-4 pb-4">
+            <div class="col-sm-6">
+                <h2 class="display-4 mb-4">DOM a JavaScript</h2>
+                <p>
+                    DOM není programovací jazyk; představuje skutečně jen strukturu dokumentu převedenou do podoby
+                    objektového
+                    modelu, která by měla být nezávislá na konkrétním programovacím jazyku. K objektům stránky díky tomu
+                    můžeme
+                    přistupovat s využitím různých programovacích jazyků, například Pythonu.</p>
+                <p>Přesto se zdaleka nejčastěji používá pro účely manipulace s objekty webové stránky skriptovací jazyk
+                    JavaScript.
+                    Spojením JavaScriptu s DOM vzniklo několik API a ty budeme využívat při tvorbě našich webových
+                    aplikací.</p>
+            </div>
+            <div class="col-sm-6">
+                <p>
+                    K objektům stránky lze přistupovat po jejich načtení do okna prohlížeče. I z toho důvodu je
+                    vhodnější,
+                    když skripty do kódu HTML začleníme až v samotném závěru - tedy před ukončením těla stránky.
+                    Nejpřehlednější
+                    a nejpraktičtější je připojení samostatných javascriptových souborů, abychom nemíchali jazyk HTML se
+                    skriptovacím
+                    jazykem.
+                </p>
+                <p>
+                    Základním objektem DOM je objekt document, který zahrnuje samotnou webovou stránku a všechny v ní
+                    obsažené elementy.
+                </p>
+                <p>
+                    Dalším důležitým objektem je window, představující okno prohlížeče. Součástí objektu window jsou
+                    mimo jiné i metody,
+                    jimiž můžeme vyvolat "vyskakovací" popup okna (window.alert(), window.prompt() nebo
+                    window.confirm()).
+                </p>
+            </div>
+            <div class="col-sm-12">
+                <h3 class="text-center m-4">Přehled základních datových typů (rozhraní) DOM</h3>
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Datový typ (rozhraní)</th>
+                            <th>Popis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/API/Document"><code>document</code></a>
+                            </td>
+                            <td>Základní, kořenový (root) objekt představující dokument (HTML nebo XML).</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node"><code>node</code></a>
+                            </td>
+                            <td>Každý objekt umístěný v dokumentu je určitým typem uzlu (node). Uzlem je v HTML
+                                dokumentu nejen libovolný element (element node),
+                                ale rovněž vnitřní text (text node) nebo atribut (atribut node).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/API/Element"><code>element</code></a>
+                            </td>
+                            <td>Element (tedy jakákoliv značka v HTML) je speciálním typem uzlu v dokumentu (tedy na
+                                webové stránce).
+                                Metodou <code>document.createElement()</code> můžeme na stránce vytvořit nový element.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList"><code>nodeList</code></a>
+                            </td>
+                            <td>Objekt <code>nodeList</code> představuje pole (seznam) elementů či uzlů, které můžeme
+                                získat například použitím metody <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll"><code>document.querySelectorAll()</code></a>.
+                                Jednotlivé položky <code>nodeList</code> jsou přístupné následujícími dvěma způsoby:
+                                <ul>
+                                    <li>list.item(1)</li>
+                                    <li>list[1]</li>
+                                </ul>
+                                Číslo 1 zde představuje tzv. index určující pořadí elementu (uzlu) v poli (seznamu).
+                                Protože počáteční index je 0, jde v
+                                tomto případě o odkaz na druhý prvek pole (seznamu).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>attribute</code></td>
+                            <td>Speciální rozhraní pro atributy, které mohou být přiřazeny k HTML elementům (např.
+                                class, src, title atd.).</td>
+                        </tr>
+                        <tr>
+                            <td><a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap"><code>namedNodeMap</code></a>
+                            </td>
+                            <td>Rozhraní umožňující přistupovat k poli (seznamu) atributů určitého uzlu pomocí jejich
+                                názvů.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <h2 class="display-4">Praktické příklady možností využití DOM</h2>
+        </div>
+        <div class="row pt-4 pb-4">
+            <div class="col-12">
+                <h3>1. Vytváření a odstraňování elementů</h3>
+                <p>Po kliknutí na tlačítko <button>Nový element</button> se v sekci <b>Sklad</b> vytvoří nový prvek HTML
+                    podle výběru ze seznamu.
+                    Po dvojitém kliknutí na některý z nových elementů může být ze skladu odstraněn (po potvrzení).
+                </p>
+                <p><button id="novy-element" class="btn btn-primary">Nový element</button>
+                    <select id="vyber-element">
+                        <option>H1</option>
+                        <option>B</option>
+                        <option>HR</option>
+                        <option>IMG</option>
+                    </select>
+                </p>
+                <div id="sklad" class="alert alert-secondary">
+                    <h4 class="bg-dark text-white text-center p-3">Sklad</h4>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row pt-4 pb-4">
+            <div class="col-12">
+                <h3>2. Změna obsahu elementu</h3>
+                <ul>
+                    <li>Po kliknutí na nadpis se objeví popup okno <code>prompt()</code>, do něhož uživatel zadá nový text nadpisu.</li>
+                    <li>Po vstupu kurzoru myši do obrázku se na obličeji objeví usměv, když myš obrázek opustí, úsměv zmizí.</li>        
+                </ul>
+                <div id="example2" class="alert alert-secondary">
+                    <h4 class="bg-danger text-white text-center p-3">Tento nadpis můžete změnit</h4>
+                    <p class="text-center"><img src="img/sad.png" alt="Tvář"></p>                    
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row pt-4 pb-4">
+            <div class="col-12">
+                <h3>3. Změna stylů</h3>
+                <p>Při pohybu myši nad nadpisem dochází k náhodným proměnám jeho stylu (barvy, velikost písma, zarovnání).</p>
+                <div id="example3" class="alert alert-secondary">
+                    <h4 class="p-3">Nadpis mění svůj styl</h4>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row pt-4 pb-4">
+            <div class="col-12">
+                <h3>4. Změny atributu class</h3>
+                <p>Přidávejte a ubírejte nadpisu třídy</p>
+                <div id="example4" class="alert alert-secondary">
+                    <h4 class="bg-success text-center p-3">Kolik máte tříd?</h4>
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row pt-4 pb-4">
+            <div class="col-12">
+                <h3>5. Mizení</h3>
+                <p>Nechejte vše zmizet</p>
+                <div id="example4" class="alert alert-secondary">
+                    <h4 class="bg-success text-center p-3">Kolik máte tříd?</h4>
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+    </main>    
+    <footer class="container-fluid bg-secondary p-3">
+        <p class="text-center">&copy; SŠPU Opava 2020</p>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="js/dom.js"></script>
+</body>
+
+</html>
